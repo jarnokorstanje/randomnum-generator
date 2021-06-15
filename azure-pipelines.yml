@@ -9,8 +9,15 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+# steps:
+# - script: |
+#     make
+#   displayName: 'make'
+
 steps:
 - script: |
-    make
+    set -e
+    make -f nonexisting.mk
+    echo Do whatever else
   displayName: 'make'
 
