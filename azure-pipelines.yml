@@ -9,13 +9,20 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-# steps:
-# - script: |
-#     make
-#   displayName: 'make'
-
 steps:
 - script: |
-    make -f nonexisting.mk
+    make
   displayName: 'make'
 
+- task: CopyFiles@2
+  displayName: 'Copy artifacts'
+  inputs:
+    contents: '**/main'
+    targetFolder: '$(build.artifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts'
+  inputs:
+    pathToPublish: '$(build.artifactStagingDirectory)'
+    artifactName: 'artifact'
+    artifactType: 'container'

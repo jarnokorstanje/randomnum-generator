@@ -6,7 +6,7 @@ HEADERS = $(wildcard *.h)                           # get and list all files wit
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))     # get all files with a .c extension to convert to .o
 CFLAGS = -Wall              # add all wanted compiler flags
 
-.PHONY: default main clean  # prevent conflicts with future files called like the existing make commands
+.PHONY: default main clean all  # prevent conflicts with future files called like the existing make commands
 
 default: main
 
