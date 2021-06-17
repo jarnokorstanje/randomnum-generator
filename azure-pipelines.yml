@@ -16,8 +16,6 @@ pool:
 
 steps:
 - script: |
-    set -e
     make -f nonexisting.mk
-    echo Do whatever else
   displayName: 'make'
 
